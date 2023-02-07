@@ -42,6 +42,11 @@ pub fn process_instruction(
         return Err(ProgramError::InvalidArgument);
     }
 
+    if !treasury.is_writable {
+        msg!("You thought it would be that easy?");
+        return Err(ProgramError::InvalidArgument);
+    }
+
     if *treasury.key != TREASURY_ID {
         msg!("Hey! I want those funds!");
         return Err(ProgramError::InvalidArgument);
